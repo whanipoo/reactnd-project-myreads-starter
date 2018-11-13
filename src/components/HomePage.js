@@ -6,6 +6,7 @@ import { getAll } from "../BooksAPI.js";
 
 
 export default class HomePage extends Component {
+  //As soon as the page loaded, get all books
   async componentDidMount(){
     try {
       const books = await getAll();
@@ -16,6 +17,7 @@ export default class HomePage extends Component {
     }
   }
 
+//Rendering all shelves
   render(){
     return (
       <div className="list-books">
@@ -29,6 +31,7 @@ export default class HomePage extends Component {
             <Shelf title="Read" books={this.props.read} moveBook={this.props.moveBook} />
           </div>
         </div>
+        //"+" linking to the search page to add books
         <div className="open-search">
           <Link to="/search"/>
         </div>

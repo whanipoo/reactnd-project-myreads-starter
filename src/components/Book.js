@@ -1,8 +1,10 @@
+//Book components
 import React, { Component } from "react";
 
 import {update} from "../BooksAPI";
 
 export default class Book extends Component {
+  //Book handler, move the book when the shelf changes
   handleChange = async e => {
     e.persist();
     try {
@@ -26,11 +28,13 @@ export default class Book extends Component {
             style={{
               width: 128,
               height: 193,
+              //If there's a thumbnail, it will be displayed
               backgroundImage: `url(${this.props.imageLinks ? this.props.imageLinks.thumbnail : ""})`
             }}>
           </div>
 
           <div className="book-shelf-changer">
+            //Shelf selector
             <select onChange={this.handleChange} value={this.props.shelf}>
               <option value="move" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
@@ -41,6 +45,7 @@ export default class Book extends Component {
           </div>
         </div>
         <div className="book-title">{this.props.title}</div>
+        //Display author(s) is there's any.
         <div className="book-authors">{this.props.authors ? this.props.authors[0] : "No Author"}</div>
       </div>
     )

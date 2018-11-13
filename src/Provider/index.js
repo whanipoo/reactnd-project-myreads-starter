@@ -8,11 +8,12 @@ export default class index extends Component {
       currentlyReading: [],
       wantToRead: [],
       read: [],
+      //Filter books for each shelf
       addBooks: books => {
         const currentlyReading = books.filter(book => book.shelf === "currentlyReading");
         const wantToRead = books.filter(book => book.shelf === "wantToRead");
         const read = books.filter(book => book.shelf === "read");
-
+        //Update states with current books on each shelf
         this.setState({
           books,
           currentlyReading,
@@ -20,31 +21,18 @@ export default class index extends Component {
           read
         });
       },
-
+      //Function that move books
       moveBook: (book, newShelf, allShelfs) => {
-        //console.log(book, newShelf, allShelfs);
 
-        //if(newShelf === 'none'){
           const newBooks = this.state.books.map(allBooks => {
-
+            //Find book by id then update shelf
             if(book.id === allBooks.id){
               allBooks.shelf = newShelf;
             }
             return allBooks;
           });
+          //Update list of books
           this.state.addBooks(newBooks);
-        /*} else {
-          const newBooks = this.state.books.map(allBooks => {
-            const foundID = allShelfs[newShelf].find(
-              bookID => bookID === allBooks.id
-            );
-            if(foundID){
-              allBooks.shelf = newShelf;
-            }
-            return allBooks;
-          });
-          this.state.addBooks(newBooks);
-        }*/
 
       }
     }

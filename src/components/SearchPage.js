@@ -14,7 +14,7 @@ export default class SearchPage extends Component {
 
     }
   }
-
+  //As soon as the page loaded, get all books
   async componentDidMount(){
     try {
       const books = await getAll();
@@ -25,6 +25,7 @@ export default class SearchPage extends Component {
     }
   }
 
+  //Handles changing query and update list of books being displayed
   handleQueryChange = async e => {
     try {
       const query = e.target.value;
@@ -53,6 +54,7 @@ export default class SearchPage extends Component {
     return (
       <div className="search-books">
         <div className="search-books-bar">
+          //Arrow that will link to the homepage
           <Link to="/" className="close-search">Close</Link>
           <div className="search-books-input-wrapper">
             {/*
@@ -63,17 +65,19 @@ export default class SearchPage extends Component {
               However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
               you don't find a specific author or title. Every search is limited by search terms.
             */}
+            //Search input
             <input type="text" placeholder="Search by title or author" onChange={this.handleQueryChange} value={this.state.query} />
 
           </div>
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
+            //Map through all the searched books and display them
             {this.state.books.length > 0 && this.state.books.map(book => {
               const foundShelf = this.props.books.find(
                 searchBook => searchBook.id === book.id
               );
-
+              //Check is the book aleady have a shelf or not
               if(foundShelf){
                 book.shelf = foundShelf.shelf;
               }

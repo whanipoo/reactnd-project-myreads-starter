@@ -8,6 +8,7 @@ export default class Shelf extends Component {
         <h2 className="bookshelf-title">{this.props.title}</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
+          //Check to see if there are any book in the shelf. If there are, display them.
               {this.props.books &&
                 this.props.books.map(book => <li  key={book.id}><Book key={book.id} {...book} moveBook={this.props.moveBook} /></li> )}
 
