@@ -31,7 +31,6 @@ export default class HomePage extends Component {
             <Shelf title="Read" books={this.props.read} moveBook={this.props.moveBook} />
           </div>
         </div>
-        //"+" linking to the search page to add books
         <div className="open-search">
           <Link to="/search"/>
         </div>

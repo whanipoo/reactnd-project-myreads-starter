@@ -23,9 +23,7 @@ class BooksApp extends React.Component {
       <div className="app">
         <BrowserRouter>
           <Provider>
-            //Switch between homepage and the search page
             <Switch>
-              //Rendering Homepage
               <Route
                 exact
                 path="/"
@@ -35,7 +33,6 @@ class BooksApp extends React.Component {
                   </MyContext.Consumer>
               )}
               />
-            //Rendering search page
               <Route
                 exact
                 path="/search"
